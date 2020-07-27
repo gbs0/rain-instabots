@@ -1,5 +1,4 @@
 // Instagram URL (https://www.instagram.com/p/CC_cEcbF3Y0/)
-require('dotenv/config');
 const puppeteer = require('puppeteer');
 const delay = require('delay');
 
@@ -12,18 +11,10 @@ const user = {
   // const browser = await puppeteer.launch({args: ['--no-sandbox']});
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  
   await page.goto("https://www.instagram.com/accounts/login/?next=%2Fp%2FCC_cEcbF3Y0%2F");
-  // Selecionar/Clicar na logo
-    
   await delay(1000);
   
-
-  const login = await page.$$("input");
-  const btnSubmit = await page.$("button");
-  
-  // console.log(login[0]);
-  // console.log(btnSubmit);
-
   // await page.type(login[0], 'gb_s0')
   // await page.type(login[1], process.env.SECRET_PASSWORD)
 
@@ -32,6 +23,7 @@ const user = {
 
   await page.screenshot({path: 'screenshots/test_FORM.png'});
   
+  // Login Submit
   await Promise.all([
     page.waitForNavigation(),
     // page.click(btnSubmit)
@@ -42,7 +34,7 @@ const user = {
   
   // const login = await page.$$("input");
   // const btnSubmit = await page.$$("button");
-  
+  await page.goto("https://www.instagram.com/p/CC_cEcbF3Y0/")
   
   
   
