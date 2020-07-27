@@ -1,5 +1,12 @@
 // Instagram URL (https://www.instagram.com/p/CC_cEcbF3Y0/)
+require('dotenv/config');
 const puppeteer = require('puppeteer');
+const delay = require('delay');
+
+const user = {
+  username: 'gb_s0',
+  password: 'Gbrp6789instagram$',
+};
 
 (async () => {
   // const browser = await puppeteer.launch({args: ['--no-sandbox']});
@@ -8,26 +15,35 @@ const puppeteer = require('puppeteer');
   await page.goto("https://www.instagram.com/accounts/login/?next=%2Fp%2FCC_cEcbF3Y0%2F");
   // Selecionar/Clicar na logo
     
-  page
-    .waitForSelector('h1')
-    .then(() => console.log('Login Page: '));
+  await delay(1000);
   
+
   const login = await page.$$("input");
-  const btnSubmit = await page.$$("button");
+  const btnSubmit = await page.$("button");
   
-  // await Promise.all([
-  //   page.waitForNavigation(),
-  //   // page.click("button")
-  // ]);
+  // console.log(login[0]);
+  // console.log(btnSubmit);
+
+  // await page.type(login[0], 'gb_s0')
+  // await page.type(login[1], process.env.SECRET_PASSWORD)
+
+  await page.type("input[name='username']", user.username, { delay: 50 });
+  await page.type("input[name='password']", user.password, { delay: 50 });
+
+  await page.screenshot({path: 'screenshots/test_FORM.png'});
   
-  await page.screenshot({path: 'screenshots/test00.png'});
+  await Promise.all([
+    page.waitForNavigation(),
+    // page.click(btnSubmit)
+    page.click('button[type="submit"]')
+  ]);
+  
+  await page.screenshot({path: 'screenshots/test_LOGIN.png'});
   
   // const login = await page.$$("input");
   // const btnSubmit = await page.$$("button");
   
-  console.log(login);
-  console.log(btnSubmit);
-
+  
   
   
   // await Promise.all([
