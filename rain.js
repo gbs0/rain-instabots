@@ -5,13 +5,21 @@ const puppeteer = require('puppeteer');
   // const browser = await puppeteer.launch({args: ['--no-sandbox']});
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto("https://www.instagram.com/p/CC_cEcbF3Y0/");
+  await page.goto("https://www.instagram.com/accounts/login/?next=%2Fp%2FCC_cEcbF3Y0%2F&source=desktop_nav");
   
-  await Promise.all([
-    page.waitForNavigation(),
-    page.click(".Ypffh")
-  ]);
-  //const formDiv = document.querySelector(".X7cDz");
+  
+  await page.type("._2hvTZ pexuQ zyHYP", "@gb_s0");
+
+  await page.screenshot({path: 'screenshots/test.png'});
+
+  // await page.type(".Ypffh", "@gb_s0");
+  
+  // await Promise.all([
+  //   page.waitForNavigation(),
+  //   page.click(".sqdOP yWX7d    y3zKF     ")
+  // ]);
+  
+  // const formDiv = document.querySelector(".X7cDz");
   // const textArea = document.querySelector(".Ypffh");
 
   // Get page elements and type
