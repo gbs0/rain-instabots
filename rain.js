@@ -12,12 +12,14 @@ const user = {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   
+  // Login Page
   await page.goto("https://www.instagram.com/accounts/login/?next=%2Fp%2FCC_cEcbF3Y0%2F");
   await delay(1000);
   
   // await page.type(login[0], 'gb_s0')
   // await page.type(login[1], process.env.SECRET_PASSWORD)
 
+  // Login Forms
   await page.type("input[name='username']", user.username, { delay: 50 });
   await page.type("input[name='password']", user.password, { delay: 50 });
 
@@ -26,7 +28,7 @@ const user = {
   // Login Submit
   await Promise.all([
     page.waitForNavigation(),
-    // page.click(btnSubmit)
+    // btnSubmit.click()
     page.click('button[type="submit"]')
   ]);
   
