@@ -23,6 +23,7 @@ const user = {
   await page.type("input[name='username']", user.username, { delay: 50 });
   await page.type("input[name='password']", user.password, { delay: 50 });
 
+  
   await page.screenshot({path: 'screenshots/test_FORM.png'});
   
   // Login Submit
@@ -36,9 +37,7 @@ const user = {
   
   // const login = await page.$$("input");
   // const btnSubmit = await page.$$("button");
-  await page.goto("https://www.instagram.com/p/CC_cEcbF3Y0/")
-  
-  
+  await page.goto("https://www.instagram.com/p/CC_cEcbF3Y0/");
   
   // await Promise.all([
   //   page.waitForNavigation(),
@@ -62,8 +61,6 @@ const user = {
   // for (currentURL of ['https://example.com', 'https://google.com', 'https://bbc.com']) {
   //   await page.goto(currentURL);
   // }
-  
-
 
   console.log('Testing');
 
