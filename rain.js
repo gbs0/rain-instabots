@@ -7,6 +7,8 @@ const user = {
   password: 'Gbrp6789instagram$',
 };
 
+const users = ["@programarendaextra.tv", "@ajib_torii", "@appleclub.uz"];
+
 (async () => {
   // const browser = await puppeteer.launch({args: ['--no-sandbox']});
   const browser = await puppeteer.launch();
@@ -23,7 +25,7 @@ const user = {
   await page.type("input[name='username']", user.username, { delay: 50 });
   await page.type("input[name='password']", user.password, { delay: 50 });
 
-  
+
   await page.screenshot({path: 'screenshots/test_FORM.png'});
   
   // Login Submit
@@ -48,21 +50,24 @@ const user = {
   // const textArea = document.querySelector(".Ypffh");
 
   // Get page elements and type
-  // const textArea = await page.$(".Ypffh")
+  
   // await textArea.click({clickCount:3})
   // await textArea.type('gb_s0')
 
   // await page.click(".sqdOP yWX7d    y3zKF     ")
 
   // For Loop
-  // await page
-  // .waitForSelector('input')
-  // .then(() => console.log('First URL with image: '));
-  // for (currentURL of ['https://example.com', 'https://google.com', 'https://bbc.com']) {
-  //   await page.goto(currentURL);
-  // }
+  await page
+  .waitForSelector("textarea[class='Ypffh']")
+  .then(() => console.log('Commenting ' + users.length + ' users'));
+  for (let i = 0; i < users.length; i++){
+    await page.type("textarea[class='Ypffh']", users[i], {delay: 1000})
+    await page.click("button[type='submit']")
+    await page.screenshot({path: 'screenshots/profiles/' + user[i] + '_submitted.png'});
+    console.log("Submitted: " + users[i])
+  }
 
-  console.log('Testing');
+  console.log('Navigation complete');
 
   await browser.close();
 

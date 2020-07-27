@@ -5,12 +5,12 @@ class Parse
 		@names_array = []
   end
 
-	def load
-	 File.open("./profiles/0-9.txt", @read_mode) do |file|
+	def load(file_path)
+	 File.open(file_path, @read_mode) do |file|
 	 	file.each do |names|
 	 		@names_array.push(names.chomp)
 	 	end
-	 	p @names_array
+	 	@names_array
 	 end
 	end
 
@@ -21,4 +21,4 @@ class Parse
 	# end
 end
 
-Parse.new.load
+p Parse.new.load(ARGV.first.to_s)
