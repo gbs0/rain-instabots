@@ -48,10 +48,10 @@ const users = ["@kafasizamq", "@6o0tx_", "@salihhbyk", "@pefesya", "@420.fridays
   .then(() => console.log('Commenting ' + users.length + ' users'));
   for (let i = 0; i < users.length; i++){
     const textArea = await page.$("textarea[class='Ypffh']")
-    await page.waitFor(randomInt(2000, 4999))
-    await page.type("textarea[class='Ypffh']", users[i], {delay: randomInt(399, 999)})
-    await page.click("button[type='submit']", {delay: randomInt(399, 999)})
-    await page.waitFor(randomInt(2000, 4999))
+    await page.waitFor(randomInt(2000, 5999))
+    await page.type("textarea[class='Ypffh']", users[i], {delay: randomInt(399, 1999)})
+    await page.click("button[type='submit']", {delay: randomInt(399, 1999)})
+    await page.waitFor(randomInt(2000, 5999))
     // Condicao do formulario de ter sido enviado ou nao
     // await page.screenshot({path: 'screenshots/profiles/' + users[i] + '_submitted.png'});
     
